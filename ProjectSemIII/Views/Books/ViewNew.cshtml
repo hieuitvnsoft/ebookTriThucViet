@@ -1,0 +1,14 @@
+﻿@model ProjectSemIII.Areas.Admin.Models.DataModel.News
+@{
+    ViewBag.Title = "ViewNew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="text-center"> <h2><b>@Model.Tittle</b></h2></div>
+    <div>@Model.DateWirite</div>
+    <div>@Html.Raw(Model.Content)</div>
+    <div class="text-right"><b>@ViewBag.ad.FullName</b></div>
+
+</div>
+

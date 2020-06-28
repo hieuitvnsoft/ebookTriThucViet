@@ -1,0 +1,8 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.Ads>
+@foreach (var item in Model)
+{
+    <a href="@item.AdsLink" target="_blank" style="margin-top:10px; padding:auto">
+        <img width="250" src="/Areas/Admin/Content/ImageAds/@item.Image" />
+    </a>
+
+}

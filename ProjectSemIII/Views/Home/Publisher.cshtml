@@ -1,0 +1,9 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.Publisher>
+
+<ul class="sub_menu">
+    @foreach (var item in Model)
+    {
+        <li><a href="/Books/Publisher/@item.PublisherId">@item.PublisherName</a></li>
+    }
+</ul>
+

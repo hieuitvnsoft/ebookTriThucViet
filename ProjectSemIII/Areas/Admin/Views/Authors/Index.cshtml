@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.Author>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2><b>Danh sách tác giả</b></h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create", new { }, new { @class="btn-primary btn"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorPhone)
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorAddress)
+        </th>
+      
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorAddress)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.AuthorId }, new { @class="btn-primary btn"}) |
+            @Html.ActionLink("Xem chi tiết", "Details", new { id=item.AuthorId }, new { @class = "btn-success btn" }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.AuthorId }, new { @class = "btn-danger btn" })
+        </td>
+    </tr>
+}
+
+</table>

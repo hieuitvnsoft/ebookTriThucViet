@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.Admin>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Admin  EBook - Tri Thức Việt</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/~/Areas/Admin/Content/Image/icon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/css/main.css">
+    <!--==============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" action="/Admin/Home/ForgotPassword" method="post">
+                    <div class="row" style="align-items:center">
+                        <img width="300" style="padding:auto; margin:auto" src="/./././Content/Image/LOGO.png" />
+                    </div>
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Xác nhận mật khẩu
+                    </span>
+                    @Html.Raw(TempData["msg"])
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" id="password" name="password" placeholder="Nhập mật khẩu mới">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" id="confirm_password" name="confirm_password" placeholder="Nhập email của bạn">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Đổi mật khẩu
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-90">
+                        <a class="txt1" href="~/Home/Login">
+                            Quay lại đăng nhập
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+    <script type="text/javascript">
+        $('#password, #confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    $('#message').html('Trùng khớp').css('color', 'green');
+  } else
+    $('#message').html('Mật khẩu không khớp').css('color', 'red');
+});
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Areas/Admin/Content/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Areas/Admin/Content/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Areas/Admin/Content/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Areas/Admin/Content/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Areas/Admin/Content/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Areas/Admin/Content/js/main.js"></script>
+    <script src="~/Areas/Admin/Content/js/main.js"></script>
+
+</body>
+</html>

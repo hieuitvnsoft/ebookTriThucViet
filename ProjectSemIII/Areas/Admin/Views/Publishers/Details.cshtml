@@ -1,0 +1,59 @@
+﻿@model ProjectSemIII.Areas.Admin.Models.DataModel.Publisher
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Nhà xuất bản</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.PublisherId }, new { @class="btn btn-primary"}) |
+    @Html.ActionLink("Quay trở lại", "Index", new { }, new { @class = "btn btn-primary" })
+</p>

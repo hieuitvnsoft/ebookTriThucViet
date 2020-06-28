@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+}
+
+<h2 style="color:red">Bạn đã đặt hàng thành công</h2>
+
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            window.location.replace('http://localhost:50168/Home/Index');
+        }, 5000);
+    });
+</script>
+    }

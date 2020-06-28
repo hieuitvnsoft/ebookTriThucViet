@@ -1,0 +1,75 @@
+﻿@model ProjectSemIII.Areas.Admin.Models.DataModel.News
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông tin chi tiết</h2>
+
+<div>
+    <h4>Bài viết</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tittle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tittle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desciption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desciption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keyword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateWirite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateWirite)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Quay trở lại", "Index")
+</p>

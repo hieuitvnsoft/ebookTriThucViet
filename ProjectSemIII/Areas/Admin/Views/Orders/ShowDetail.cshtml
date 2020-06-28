@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.OrderDetail>
+@{
+    ViewBag.Title = "ShowDetail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Book.BookId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Book.BookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubTotal)
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book.BookId)
+            </td>
+            <td>
+                <a target="_blank" href="~/Books/Details/@item.BookId">@Html.DisplayFor(modelItem => item.Book.BookName)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Convert.ToDecimal(item.Price).ToString("#,##0.#####") vnđ
+            </td>
+            <td>
+                @Convert.ToDecimal(item.SubTotal).ToString("#,##0.#####") vnđ
+            </td>
+
+        </tr>
+    }
+
+</table>
+<div>
+    @Html.ActionLink("Quay lại", "Index", new { }, new { @class = "btn btn-primary" })
+</div>
+
+

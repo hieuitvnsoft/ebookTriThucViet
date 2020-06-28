@@ -1,0 +1,147 @@
+﻿@model IEnumerable<ProjectSemIII.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+    var listproduct = (List<ProjectSemIII.Models.CartItem>)Session["products"];
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Mã sách</td>
+            <td>Tên sách</td>
+            <td>Ảnh</td>
+            <td width="100">Số lượng</td>
+            <td>Đơn giá</td>
+            <td>Thành tiền</td>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in listproduct)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td>
+                    <img width="80" src="~/Areas/Admin/Content/ImageBook/@item.Picture" />
+
+                </td>
+                <td>
+                    <input class="quantity" type="number" readonly="true" value="@item.Quantity" />
+
+                </td>
+                <td>
+                    @Convert.ToDecimal((item.Price).GetValueOrDefault(0)).ToString("#,##0.#####") vnđ.
+                </td>
+                <td>
+                    @Convert.ToDecimal((item.Price * item.Quantity).GetValueOrDefault(0)).ToString("#,##0.#####") vnđ.
+
+                </td>
+
+
+            </tr>
+
+        }
+
+    </tbody>
+
+</table>
+<div class="row">
+
+    <div class="group">
+        @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Người mua hàng:</label>
+                <input value="@Session["FullNameMember"].ToString()" readonly="true" />
+            </div>
+            <div class="form-group">
+                <label>Phương thức vận chuyển:</label>
+                @Html.DropDownList("ShippingId", (IEnumerable<SelectListItem>)ViewBag.ShippingId, new { @class = "control-label col-md-4", @style = "padding:auto", @onchange = "GetShip(this.value)" })
+
+            </div>
+            <div class="form-group">
+                <label>Tổng tiền thanh toán:</label>
+                <input id="" value="@Convert.ToDecimal(Model.Sum((x=>x.Price * x.Quantity)).GetValueOrDefault(0)).ToString("#,##0.#####")" readonly="true" /> vnđ.
+                <input id="totalpayment" name="totalpayment" value="@Model.Sum((x=>x.Price * x.Quantity)).GetValueOrDefault(0)" hidden="true" />
+            </div>
+            <div class="form-group">
+                <label>Phương thức thanh toán</label>
+                @Html.DropDownList("TransitionId", (IEnumerable<SelectListItem>)ViewBag.TransitionId, new { @class = "control-label col-md-4", @style = "padding:auto", @onchange = "showTienmat(this.value)" })
+
+            </div>
+
+            <div id="tienE" style="display:none;">
+                <label>Số dư Emoney : </label>
+
+            </div>
+
+            <div id="chuyenkhoan" style="display:none;">
+
+
+                <div>
+                    <label>Chọn ngân hàng chuyển khoản</label>
+                    @Html.DropDownList("BankId", (IEnumerable<SelectListItem>)ViewBag.BankId, new { @class = "control-label col-md-4", @style = "padding:auto" })
+
+                </div>
+
+                <div>
+                    <label>Nhập số tài khoản:</label>
+                    <input id="AccountBank" type="text" name="AccountBank" value="" />
+
+                </div>
+                <div>Nhập mã PIN   <input type="password" id="PIN" name="PIN" value="" /> </div>
+            </div>
+
+
+            <label>Chú thich (Ghi rõ người nhận, địa chỉ, số điện thoại,........):</label>
+                <div class="form-group">
+
+                    <textarea id="note" name="note" style="resize:none; width:700px; height:300px"></textarea>
+                </div>
+
+
+
+                <button type="submit" id="tm" class="btn btn-primary">Đặt hàng</button>
+                <button style="display:none" type="submit" id="em" class="hidden btn btn-primary">Đặt hàng và thanh toán</button>
+                <button style="display:none" type="button" id="tb" onclick="Tranfer()" class="btn btn-primary">Đặt hàng  và thanh toán </button>
+        }
+
+    </div>
+
+</div>
+
+<script>
+
+
+    function Tranfer() {
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:65028/bkap/giao-dich-Ebook',
+            data: {
+                FullName: "Nguyễn Việt Hoàng",
+                Phone: "0968227577",
+                Email:"hoang@gmail.com"
+            },
+            success: function (data) {
+            alert("Thêm thành công" + msg.statusText);
+            },
+            error: function (msg) {
+                alert("Lỗi server" + msg.statusText);
+            }
+        });
+
+
+    }
+
+
+</script>

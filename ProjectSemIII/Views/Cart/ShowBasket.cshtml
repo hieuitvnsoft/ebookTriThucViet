@@ -1,0 +1,109 @@
+﻿@model IEnumerable<ProjectSemIII.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+    var listproduct = (List<ProjectSemIII.Models.CartItem>)Session["products"];
+}
+
+
+@if (listproduct.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Mã sách</td>
+                <td>Tên sách</td>
+                <td>Ảnh</td>
+                <td width="100">Số lượng</td>
+                <td>Đơn giá</td>
+                <td>Thành tiền</td>
+                <td width="120"></td>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in listproduct)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+
+                    <td>
+                        <img width="80" src="~/Areas/Admin/Content/ImageBook/@item.Picture" />
+
+                    </td>
+                    <td>
+                        <input class="quantity" type="number" onchange="updateQuantity('@item.BookId',this.value)" value="@item.Quantity" />
+
+                    </td>
+                    <td>
+                        @Convert.ToDecimal((item.Price).GetValueOrDefault(0)).ToString("#,##0.#####") vnđ.
+                    </td>
+                    <td>
+                        @Convert.ToDecimal((item.Price * item.Quantity).GetValueOrDefault(0)).ToString("#,##0.#####") vnđ.
+
+                    </td>
+                    <td>
+
+                        <a href=""><img width="28" onclick="RemoveCart('@item.BookId')" src="~/Content/Image/remove.png" alt="Alternate Text" /></a>
+                    </td>
+
+                </tr>
+            }
+            <tr >
+                <td colspan="5">Tổng tiền</td>
+                <td colspan="2">@Convert.ToDecimal(Model.Sum(x => x.Quantity * x.Price).GetValueOrDefault(0)).ToString("#,##0.#####") vnđ.</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+    <div class="row" >
+
+
+        <a href="~/Home/Index" class="btn btn-primary">Tiếp tục mua sách</a>&#160;&#160;
+        <a href="~/Cart/Payment" class="btn btn-primary">Thanh toán</a>
+
+    </div>
+}
+else
+{
+    <div class="row" >Bạn chưa chọn sản phẩm nào</div>
+            <div class="row" style="padding-top:30px">
+
+                <a href="~/Home/Index" class="btn btn-primary">Quay lại mua sách</a>
+
+            </div>
+}
+
+
+
+
+<script>
+    function updateQuantity(bid, quantity) {
+
+        $.ajax({
+            type: "GET",
+            url: "/Cart/UpdateCart",
+            data: { id: bid, quantity: quantity },
+            success: function (res) {
+                window.location.href = res;
+            }
+        })
+    }
+    function RemoveCart(bid) {
+
+        $.ajax({
+            type: "GET",
+            url: "/Cart/RemoveItem",
+            data: { id: bid },
+            success: function (res) {
+                window.location.href = res;
+            }
+        })
+    }
+</script>

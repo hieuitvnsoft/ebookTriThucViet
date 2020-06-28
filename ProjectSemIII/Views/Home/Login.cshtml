@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="row text-center"> <h1>Đăng nhập</h1></div>
+    <form class="" action="/Home/Login" method="post">
+       
+        @Html.Raw(TempData["msg"])
+        <div class="container">
+            <label for="uname"><b>Tên đăng nhập</b></label>
+            <input type="text" placeholder="Nhập tên đăng nhập" name="username" required>
+
+            <label for="psw"><b>Mật khẩu</b></label>
+            <input type="password" placeholder="Nhập mật khẩu" name="password" required>
+
+            <button style="align-items:center" class="btn btn-primary" type="submit">Login</button>
+            <br />
+            @*<label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>*@
+            <div class="col-md-offset-4 col-md-3" style="padding-top:30px"><a href="~/Home/Register">Đăng ký ngay</a></div>
+
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+           
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.Bank>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách ngân hàng</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BankName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StringBankSevice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankEmail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StringBankSevice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankEmail)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.BankId }) |
+            @Html.ActionLink("Xem thông tin chi tiết", "Details", new { id=item.BankId }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.BankId })
+        </td>
+    </tr>
+}
+
+</table>

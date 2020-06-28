@@ -1,0 +1,75 @@
+﻿@model ProjectSemIII.Areas.Admin.Models.DataModel.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingMethod.ShippingName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShippingMethod.ShippingName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransitionMethod.TransitionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransitionMethod.TransitionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPayment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPayment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

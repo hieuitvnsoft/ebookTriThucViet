@@ -1,0 +1,64 @@
+﻿@model ProjectSemIII.Areas.Admin.Models.DataModel.Publisher
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h3>Bạn có chắc chắn muốn xóa?</h3>
+<div>
+    <h4>Publisher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Quay trở lại", "Index",new { }, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

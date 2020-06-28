@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách đơn đặt hàng</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingMethod.ShippingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransitionMethod.TransitionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPayment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingMethod.ShippingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransitionMethod.TransitionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPayment)
+            </td>
+
+            @if (item.Status == 0)
+            {
+                <td>@Html.ActionLink("Chưa xử lý", "Update", new { id = item.OrderId })</td>
+            }
+            else if (item.Status == 3)
+            {
+                <td>@Html.ActionLink("Đã thanh toán-cần chuyển hàng", "Update", new { id = item.OrderId })</td>
+            }
+            else if (item.Status == 4)
+            {
+                <td>@Html.ActionLink("Đã thanh toán- đã chuyển hàng", "Update", new { id = item.OrderId })</td>
+            }
+            else
+            {
+                <td>@Html.ActionLink("Đã xử lý", "Update", new { id = item.OrderId })</td>
+            }
+
+            <td>
+                @Html.ActionLink("Chi tiết", "ShowDetail", new { id = item.OrderId }, new { @class = "btn btn-primary" })
+
+            </td>
+        </tr>
+    }
+
+</table>

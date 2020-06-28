@@ -1,0 +1,149 @@
+﻿@model ProjectSemIII.Areas.Admin.Models.DataModel.Admin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2><b>Chi tiết</b></h2>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-9" style="">
+            <div class="row">
+                <div class="col-md-3 text-right" style="font-weight:bold; padding-right:20px">
+                    @Html.DisplayNameFor(model => model.Username):
+                </div>
+
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Username)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right" style="font-weight:bold; padding-right:20px">
+                    @Html.DisplayNameFor(model => model.FullName):
+                </div>
+
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.FullName)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 text-right" style="font-weight:bold; padding-right:20px">
+                    @Html.DisplayNameFor(model => model.Sex):
+                </div>
+
+                <div class="col-md-9">
+                    @if (Model.Sex == true)
+                    {
+                        <text>Nam</text>}
+            else
+            {
+                        <text>Nữ</text>}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 text-right" style="font-weight:bold; padding-right:20px">
+                    @Html.DisplayNameFor(model => model.Address):
+                </div>
+
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Address)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 text-right" style="font-weight:bold; padding-right:20px">
+                    @Html.DisplayNameFor(model => model.Birthday):
+                </div>
+
+                <div class="col-md-9">
+                    @if (Model.Birthday != null)
+                    {
+                        @Convert.ToDateTime(Model.Birthday).ToString("dd/MM/yyyy")
+
+                    }
+                    else
+                    {
+
+                    }
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 text-right" style="font-weight:bold; padding-right:20px">
+                    @Html.DisplayNameFor(model => model.Phone):
+                </div>
+
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Phone)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 text-right" style="font-weight:bold; padding-right:20px">
+                    @Html.DisplayNameFor(model => model.Email):
+                </div>
+
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Email)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 text-right" style="font-weight:bold; padding-right:20px">
+                    @Html.DisplayNameFor(model => model.Role):
+                </div>
+
+                <div class="col-md-9">
+                    @if (Model.Role == 0)
+                    {
+                        <text>Super Admin</text>
+
+                    }
+                    else if (Model.Role == 1)
+                    {
+                        <text> SubAdmin</text>
+                    }
+                    else
+                    {
+                        <text>Min Admin</text>
+                    }
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 text-right" style="font-weight:bold; padding-right:20px">
+                    @Html.DisplayNameFor(model => model.DateCreate):
+                </div>
+
+                <div class="col-md-9">
+                   @if (Model.DateCreate != null)
+                   {
+                    @Convert.ToDateTime(Model.DateCreate).ToString("dd/MM/yyyy")
+
+                   }
+                   else
+                   {
+
+                   }
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div>
+                @Html.DisplayNameFor(model => model.Avartar):
+            </div>
+            <img src="~/Areas/Admin/Content/ImageAvatar/@Html.DisplayFor(model=>model.Avartar)" width="300" />
+        </div>
+    </div>
+</div>
+<div style="padding-left:20px; padding-top:50px">
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.AdminId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Quay lại", "Index",new{ } ,new { @class = "btn btn-primary" })
+</div>

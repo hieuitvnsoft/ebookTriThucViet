@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2><b>Danh sách loại sản phẩm</b></h2>
+@*<div>
+    @using (Html.BeginForm())
+{
+    <b> Nhập tên sách cần tìm</b> @Html.TextBox("name")
+    <input class="glyphicon glyphicon-search" type="submit" style="width:100px; height:100% ; background-color:#b6ff00" value="" />
+}
+</div>*@
+
+<a>
+    @Html.ActionLink("Thêm mới thể loại", "Create")
+</a>
+<table class="table">
+    <tr>
+        <th style="width:70px; text-align:center">@Html.DisplayNameFor(model => model.CategoryId)</th>
+
+        <th style="width:300px;text-align:center">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th style="width:150px;text-align:center">
+            @Html.DisplayNameFor(model => model.CatgoryIdParent)
+        </th>
+        <th style="width:150px;text-align:center">
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th style="width:160px;text-align:center; align-items:center">Acction</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align:center">@Html.DisplayFor(modelItem => item.CategoryId)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.CatgoryIdParent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.CategoryId }, new { @class = "btn btn-primary" }) &#160;
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryId }, new { @class = "btn btn-success" }) &#160;
+                @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryId }, new { @class = "btn btn-danger" })
+                
+            </td>
+        </tr>
+    }
+
+</table>
+
+

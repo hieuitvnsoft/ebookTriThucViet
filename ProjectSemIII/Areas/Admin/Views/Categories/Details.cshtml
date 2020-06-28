@@ -1,0 +1,43 @@
+﻿@model ProjectSemIII.Areas.Admin.Models.DataModel.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Thể loại</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatgoryIdParent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatgoryIdParent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.CategoryId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Quay trở lại", "Index", new { }, new { @class = "btn btn-primary" })
+</p>

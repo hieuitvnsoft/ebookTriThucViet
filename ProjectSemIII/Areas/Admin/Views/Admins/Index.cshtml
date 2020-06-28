@@ -1,0 +1,142 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.Admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách admin</h2>
+
+<p>
+    @Html.ActionLink("Thêm Admin", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+
+        <th style="width:200px; align-items:center" >Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+
+            @if (item.Sex == true)
+            {
+                <td>Nam</td>}
+            else
+            {
+                <td>Nữ</td>}
+
+            @if (item.Birthday != null)
+                {
+                <td>@Convert.ToDateTime(item.Birthday).ToString("dd/MM/yyyy") </td>
+
+            }
+            else
+            {
+                <td></td>
+            }
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @if (item.Role ==0)
+                {
+                <td>Super Admin</td>
+
+            }
+            else if(item.Role==1)
+            {
+                <td>Admin</td>
+            }
+            else { <td>Min Admin</td>}
+
+            <td>
+                <div class="row text-center">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.AdminId }, new { @class = "btn btn-primary" }) &#160;
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.AdminId }, new { @class = "btn btn-success" }) &#160;
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.AdminId }, new { @class = "btn btn-danger" })
+                </div>
+                <div class="row text-center" style="padding-top:2px">
+                    <button class="btn btn-primary" onclick="SS()" data-toggle="modal" id="changeee" data-value="@item.AdminId"  data-target=".bs-example-modal-lg">Thay đổi mật khẩu</button>
+                    
+                </div>
+                    
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="~/Admin/Admins/Changepass" method="post">
+                <div class="hidden">
+                    <input type="text" id="cid" name="id" value="" />
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu mới:</label>
+                    <input type="password" id="pp" name="password" value="" />
+                </div>
+                <div class="form-group">
+                    <label>Nhập lại khẩu mới:</label>
+                    <input type="password" id="cpp" name="cpassword" value="" /><span id="s"></span>
+                </div>
+
+                <button type="submit">Đổi mật khẩu</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+<script type="text/javascript">
+        $('#pp, #cpp').on('keyup', function () {
+  if ($('#pp').val() == $('#cpp').val()) {
+    $('#s').html('Trùng khớp').css('color', 'green');
+  } else
+    $('#s').html('Mật khẩu không khớp').css('color', 'red');
+});
+</script>
+    <script type="text/javascript">
+        function SS() {
+            var i = document.getElementById('changeee').data().value;
+            $('#cid').value = i;
+            document.getElementById('cid').setAttribute('value', i);
+            alert(i);
+                    }
+    </script>
+}

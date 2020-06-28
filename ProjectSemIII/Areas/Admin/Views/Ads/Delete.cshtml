@@ -1,0 +1,57 @@
+﻿@model ProjectSemIII.Areas.Admin.Models.DataModel.Ads
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h3>Bạn có chắc chắn muốn xóa ?</h3>
+<div>
+    <h4>Quảng cáo</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3 text-right" style="">
+            @Html.DisplayNameFor(model => model.Image)
+        </div>
+        <div class="col-md-6">
+            <img src="~/Areas/Admin/Content/ImageAds/@Html.DisplayFor(model => model.Image)" width="300", height="600" />
+        </div>
+
+        <div class="col-md-3 text-right" style="">
+           @Html.DisplayNameFor(model => model.AdsLink)
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.AdsLink)
+        </div>
+
+        <div class="col-md-3 text-right" style="">
+            @Html.DisplayNameFor(model => model.Description)
+        </div>
+        <div class="col-md-6">
+           @Html.DisplayFor(model => model.Description)
+        </div>
+
+        <div class="col-md-3 text-right" style="">
+            @Html.DisplayNameFor(model => model.Location)
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.Location)
+        </div>
+
+        <div class="col-md-3 text-right" style="">
+            @Html.DisplayNameFor(model => model.StatusOn)
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.StatusOn)
+        </div>
+
+
+    </div>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" style="border:1px solid #808080" /> |
+            @Html.ActionLink("Quay trở lại", "Index", new { },new {@class="btn btn-primary"})
+        </div>
+    }
+</div>

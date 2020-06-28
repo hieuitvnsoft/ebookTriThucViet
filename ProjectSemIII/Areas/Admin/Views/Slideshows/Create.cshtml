@@ -1,0 +1,128 @@
+﻿@model ProjectSemIII.Areas.Admin.Models.DataModel.Slideshow
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thêm mới </h2>
+@using (Html.BeginForm("Create", "SlideShows", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Slideshow</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                <input type="file" onchange="onFileSelected1(event)" name="PictureUpload1" id="PictureUpload1" class="form-control-file" />
+                <img id="img1" src="" width="150" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                <input type="file" onchange="onFileSelected2(event)" name="PictureUpload2" id="PictureUpload2" class="form-control-file" />
+                <img id="img2" src="" width="150" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                <input type="file" onchange="onFileSelected3(event)" name="PictureUpload3" id="PictureUpload3" class="form-control-file" />
+                <img id="img3" src="" width="150" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image4, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                <input type="file" onchange="onFileSelected4(event)" name="PictureUpload4" id="PictureUpload4" class="form-control-file" />
+                <img id="img4" src="" width="150" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <input type="submit" value="Lưu" class="btn btn-default" style="border:1px solid #808080" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay trở lại", "Index", new { }, new { @class = "btn btn-primary" })
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Areas/Admin/Content/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('Description');
+    </script>
+    <script>
+        function onFileSelected1(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+
+            var imgtag = document.getElementById("img1");
+            imgtag.title = selectedFile.name;
+
+            reader.onload = function (event) {
+                imgtag.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+    </script>
+    <script>
+        function onFileSelected2(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+
+            var imgtag = document.getElementById("img2");
+            imgtag.title = selectedFile.name;
+
+            reader.onload = function (event) {
+                imgtag.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+    </script>
+    <script>
+        function onFileSelected3(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+
+            var imgtag = document.getElementById("img3");
+            imgtag.title = selectedFile.name;
+
+            reader.onload = function (event) {
+                imgtag.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+    </script>
+    <script>
+        function onFileSelected4(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+
+            var imgtag = document.getElementById("img4");
+            imgtag.title = selectedFile.name;
+
+            reader.onload = function (event) {
+                imgtag.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+    </script>
+}

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.News>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách bài viết</h2>
+
+@foreach (var item in Model)
+{
+
+    <div class="row">
+        <div class="col-md-3"><img style="width: 140px;" src="~/Areas/Admin/Content/ImgNew/@item.Image" /></div>
+        <div class="col-md-9">
+            <div><a href="~/Books/ViewNew/@item.Id">@item.Tittle</a></div>
+            <div>@item.Desciption</div>
+        </div>
+    </div>
+}
+

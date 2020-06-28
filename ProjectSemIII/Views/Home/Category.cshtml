@@ -1,0 +1,8 @@
+﻿@model IEnumerable<ProjectSemIII.Areas.Admin.Models.DataModel.Category>
+
+<ul class="sub_menu">
+    @foreach (var item in Model)
+    {
+        <li><a href="/Books/Category/@item.CategoryId">@item.CategoryName</a></li>
+    }
+</ul>
